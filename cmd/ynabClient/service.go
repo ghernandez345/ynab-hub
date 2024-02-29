@@ -1,6 +1,6 @@
 package ynabClient
 
-type Service interface {
-	List() (interface{}, error)
-	Get(id string) (interface{}, error)
+type Service[T any] interface {
+	List() ([]T, error)
+	// Get(id string) ([]T, error)
 }

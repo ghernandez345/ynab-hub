@@ -9,7 +9,7 @@ import (
 )
 
 type Client struct {
-	Transactions *TransactionService
+	Transactions Service[Transaction]
 }
 
 const YNAB_API_URL = "https://api.ynab.com/v1/"

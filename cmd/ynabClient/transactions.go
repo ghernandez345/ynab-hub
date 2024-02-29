@@ -10,7 +10,7 @@ import (
 
 type TransactionService struct{}
 
-type transaction struct {
+type Transaction struct {
 	Id                      string  `json:"id"`
 	Date                    string  `json:"date"`
 	Amount                  int     `json:"amount"`
@@ -38,7 +38,7 @@ type transaction struct {
 
 type transactionListResponse struct {
 	Data struct {
-		Transactions []transaction `json:"transactions"`
+		Transactions []Transaction `json:"transactions"`
 		// TODO: add ServerKnowledge
 	} `json:"data"`
 }
