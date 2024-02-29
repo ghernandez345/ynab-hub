@@ -43,7 +43,7 @@ type transactionListResponse struct {
 	} `json:"data"`
 }
 
-func (t *TransactionService) List() (response *transactionListResponse, err error) {
+func (t *TransactionService) List() (*transactionListResponse, error) {
 	url := fmt.Sprintf("%s/budgets/last-used/transactions", YNAB_API_URL)
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -64,10 +64,11 @@ func (t *TransactionService) List() (response *transactionListResponse, err erro
 		return nil, err
 	}
 
+	var response transactionListResponse
 	err = json.Unmarshal(body, &response)
 	if err != nil {
 		return nil, err
 	}
 
-	return response, nil
+	return &response, nil
 }

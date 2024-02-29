@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -39,7 +40,14 @@ func main() {
 			fmt.Println("Error getting transactions: ", err)
 			return
 		}
-		fmt.Println(transactions)
+
+		bytes, err := json.Marshal(transactions)
+		if err != nil {
+			fmt.Println("Error marshalling transactions: ", err)
+			return
+		}
+
+		fmt.Println(string(bytes))
 	default:
 		fmt.Println("This service is not currently supported.")
 		prtSupportedServices()
